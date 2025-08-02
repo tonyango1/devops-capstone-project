@@ -51,9 +51,6 @@ def create_accounts():
     account.create()
     message = account.serialize()
     # Uncomment once get_accounts has been implemented
-5000 account.create()
-    message = account.serialize()
-    # Uncomment once get_accounts has been implemented
     # location_url = url_for("get_accounts", account_id=account.id, _external=True)
     location_url = "/"  # Remove once get_accounts has been implemented
     return make_response(
@@ -63,6 +60,8 @@ def create_accounts():
 ######################################################################
 # LIST ALL ACCOUNTS
 ######################################################################
+
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """List all Accounts"""
@@ -91,6 +90,8 @@ def read_account(id):
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts/<id>", methods=["PUT"])
 def update_account(id):
     """Updates an account based on the id that is requested"""
@@ -101,7 +102,6 @@ def update_account(id):
 
     account.deserialize(request.get_json())
     account.update()
-    
     return account.serialize(), status.HTTP_200_OK
 
 
@@ -115,7 +115,6 @@ def delete_account(id):
     account = Account.find(id)
     if account:
         account.delete()
-        
     return "", status.HTTP_204_NO_CONTENT
 
 ######################################################################
